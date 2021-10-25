@@ -52,8 +52,6 @@ export default class Home extends Vue {}
     box-sizing: border-box;
     padding: 24px;
     width: 100%;
-    background: antiquewhite;
-    height: calc(100vh - 56px);
   }
   .home-content {
     display: grid;

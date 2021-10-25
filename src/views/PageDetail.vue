@@ -1,4 +1,10 @@
 <template>
+  <div class="content">
+    <router-link class="btn" to="/">
+      <i class="fas fa-angle-left"></i>
+      Atras
+    </router-link>
+  </div>
   <div class="detail">
     <div>
       <img
@@ -38,14 +44,16 @@ import { mapState } from 'vuex';
 export default class Card extends Vue {}
 </script>
 <style lang="scss">
-.detail{
+.content {
   display: flex;
+}
+.detail{
+  display: grid;
   align-items: center;
   justify-content: center;
   width: 100%;
   box-sizing: border-box;
-  background: antiquewhite;
-  height: calc(100vh - 56px);
+  grid-template-columns: repeat(auto-fit,minmax(15rem, 1fr));
   gap: 24px;
 
   &-card{
