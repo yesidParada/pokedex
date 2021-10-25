@@ -8,13 +8,9 @@ export default createStore({
     pokemonInfo: {
       name: '',
       img: '',
-      hp: '',
-      atack: 0,
-      defence: 0,
       experience: 0,
-      especial: '',
-      speed: '',
       abilities: {},
+      detail: [],
     },
     urlDefault: 'https://pokeapi.co/api/v2/pokemon?limit=5&offset=0',
     id: 0,
@@ -29,13 +25,12 @@ export default createStore({
       state.pokemonInfo = {
         name: response.name,
         img: response.sprites.other.dream_world.front_default,
-        hp: response.stats[0].base_stat,
-        atack: response.stats[1].base_stat,
-        defence: response.stats[2].base_stat,
         experience: response.base_experience,
-        especial: response.stats[3].base_stat,
-        speed: response.stats[5].base_stat,
-        abilities: response.abilities,
+        abilities: response.abilities.map((item: any) => item.ability.name),
+        detail: response.stats.map((item: any) => ({
+          name: item.stat.name,
+          value: item.base_stat,
+        })),
       };
       state.id = response.id;
     },

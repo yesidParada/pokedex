@@ -1,5 +1,7 @@
 # pokedex
 
+# Proyecto para visualizar el listado de pokemones existentes
+
 ## Project setup
 ```
 npm install

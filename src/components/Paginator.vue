@@ -43,6 +43,7 @@ export default class Paginator extends Vue {
   font-size: xx-large;
   cursor: pointer;
   padding-left: 24px;
+  text-decoration: none;
 }
 
 </style>
