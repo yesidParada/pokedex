@@ -1,20 +1,25 @@
 <template>
   <div class="home">
     <div class="home-content">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <Card
+        v-for="item in pokemonlist"
+        :key="item.index"
+        :name="item.name"
+        @click="viewDetail(item.url)"
+      />
     </div>
-    <div>
-      <Paginator />
+    <div class="paginator">
+      <Paginator
+        :backPages="backList"
+        :nextPages="nextList"
+       />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import { mapActions, mapState } from 'vuex';
 import Card from '../components/Card.vue';
 import Paginator from '../components/Paginator.vue';
 
@@ -22,6 +27,21 @@ import Paginator from '../components/Paginator.vue';
   components: {
     Card,
     Paginator,
+  },
+  methods: {
+    ...mapActions(['getData', 'getPokemonInfo']),
+    viewDetail(url: string) {
+      if (url) {
+        this.getPokemonInfo(url);
+        this.$router.push('/detail');
+      }
+    },
+  },
+  computed: {
+    ...mapState(['pokemonlist', 'backList', 'nextList']),
+  },
+  mounted() {
+    this.getData();
   },
 })
 export default class Home extends Vue {}
@@ -32,12 +52,16 @@ export default class Home extends Vue {}
     box-sizing: border-box;
     padding: 24px;
     width: 100%;
+    background: antiquewhite;
     height: calc(100vh - 56px);
   }
   .home-content {
     display: grid;
     gap: 24px;
-    grid-auto-rows: 22rem;
     grid-template-columns: repeat(auto-fit,minmax(15rem, 1fr));
+  }
+  .paginator {
+    position: fixed;
+    bottom: 0px;
   }
 </style>

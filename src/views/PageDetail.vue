@@ -1,35 +1,38 @@
 <template>
   <div class="detail">
+    <div>
+      <img
+        :src="pokemonInfo.img"
+        :alt="pokemonInfo.name"
+        height="300" width="300" srcset="">
+    </div>
     <div class="detail-card">
-      <h1>title</h1>
-      <ul>
-        <li>habilidad 1</li>
-        <li>habilidad 2</li>
-        <li>habilidad 3</li>
+      <h1>{{pokemonInfo.name}}</h1>
+      <ul class="group-item">
+        <li v-for="item in pokemonInfo.abilities"
+        :key="item.index" class="item">{{item.ability.name}}</li>
       </ul>
       <div>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Repellat molestiae dolore possimus unde rem eaque,
-          praesentium voluptates, pariatur nemo,
-          repudiandae minima officiis. Dolorum accusantium voluptate
-          ratione. Delectus laudantium et error?</p>
+        <h3>Detalles:</h3>
+        <div class="content-detail">
+          <label class="content-detail__item">exp: <p>{{pokemonInfo.experience}}</p></label>
+          <label class="content-detail__item">hp: <p>{{pokemonInfo.hp}}</p></label>
+          <label class="content-detail__item">atk: <p>{{pokemonInfo.atack}}</p></label>
+          <label class="content-detail__item">def: <p>{{pokemonInfo.defence}}</p></label>
+          <label class="content-detail__item">esp: <p>{{pokemonInfo.especial}}</p></label>
+          <label class="content-detail__item">speed: <p>{{pokemonInfo.speed}}</p></label>
+        </div>
       </div>
-      <div>
-        <Paginator />
-      </div>
-    </div>
-    <div>
-      <img src="../assets/pokemon.png" alt="" height="300" width="300" srcset="">
     </div>
   </div>
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import Paginator from '../components/Paginator.vue';
+import { mapState } from 'vuex';
 
 @Options({
-  components: {
-    Paginator,
+  computed: {
+    ...mapState(['pokemonInfo']),
   },
 })
 export default class Card extends Vue {}
@@ -41,18 +44,44 @@ export default class Card extends Vue {}
   justify-content: center;
   width: 100%;
   box-sizing: border-box;
+  background: antiquewhite;
   height: calc(100vh - 56px);
   gap: 24px;
 
   &-card{
     display: flex;
     flex-direction: column;
-    background: aquamarine;
+    background: white;
     box-sizing: border-box;
-    padding: 24px;
-    margin: 24px;
+    text-transform: capitalize;
+    padding: 3.3rem;
+    margin: 3.3rem;
     border-radius: 63px 0px;
     box-shadow: 4px 5px 6px;
+  }
+}
+.group-item {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+}
+.item {
+  border: 1px solid #c0c0c0;
+  box-sizing: border-box;
+  padding: 0.4rem;
+  border-radius: 16px;
+}
+.content-detail{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
   }
 }
 </style>

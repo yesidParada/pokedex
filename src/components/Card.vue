@@ -4,8 +4,7 @@
       <img alt="Vue logo" src="../assets/logo.png" width="50" height="50">
     </div>
     <div class="card-title">
-      <h3>Nombre</h3>
-      <p>Detail</p>
+      <h3>{{name}}</h3>
     </div>
   </div>
 </template>
@@ -13,10 +12,13 @@
 import { Options, Vue } from 'vue-class-component';
 
 @Options({
-  components: {
+  props: {
+    name: String,
   },
 })
-export default class Card extends Vue {}
+export default class Card extends Vue {
+  name!: string
+}
 </script>
 <style >
 .card-pokemon {
@@ -25,10 +27,11 @@ export default class Card extends Vue {}
   justify-content: center;
   gap: 24px;
   flex-direction: row-reverse;
-  background: aqua;
+  background: white;
   border-radius: 5px;
-  height: 50%;
+  padding: 1.3rem;
   box-sizing: border-box;
+  box-shadow: 1px 1px 4px #c0c0c0;
   cursor: pointer;
 }
 </style>
