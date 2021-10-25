@@ -45,16 +45,26 @@ export default createStore({
   },
   actions: {
     async getData({ commit }, url: string) {
-      const path = url || this.state.urlDefault;
-      commit('setUrlDefault', path);
-      const response = await fetch(path);
-      const data = await response.json();
-      commit('setPakemonList', data);
+      try {
+        const path = url || this.state.urlDefault;
+        commit('setUrlDefault', path);
+        const response = await fetch(path);
+        const data = await response.json();
+        commit('setPakemonList', data);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      }
     },
     async getPokemonInfo({ commit }, url: string) {
-      const response = await fetch(url);
-      const data = await response.json();
-      commit('setPokemonInfo', data);
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        commit('setPokemonInfo', data);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      }
     },
   },
   modules: {
