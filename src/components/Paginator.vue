@@ -1,17 +1,39 @@
 <template>
   <div>
-    <button class="btn"><i class="fas fa-angle-left"></i></button>
-    <button class="btn"><i class="fas fa-angle-right"></i></button>
+    <button
+      :disabled="!backPages"
+      @click="getPokemon(backPages)"
+      class="btn">
+      <i class="fas fa-angle-left"></i>
+    </button>
+    <button @click="getPokemon(nextPages)" class="btn"><i class="fas fa-angle-right"></i></button>
   </div>
 </template>
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import { mapActions, mapMutations } from 'vuex';
 
 @Options({
-  components: {
+  props: {
+    backPages: String,
+    nextPages: String,
+  },
+  methods: {
+    ...mapActions(['getData']),
+    ...mapMutations(['setPakemonList']),
+    getPokemon(url: string) {
+      if (url) {
+        this.setPakemonList([]);
+        this.getData(url);
+      }
+    },
   },
 })
-export default class Paginator extends Vue {}
+export default class Paginator extends Vue {
+  backPages!: string;
+
+  nextPages!: string;
+}
 </script>
 
 <style lang="scss">
@@ -19,6 +41,8 @@ export default class Paginator extends Vue {}
   border: none;
   background: transparent;
   font-size: xx-large;
+  cursor: pointer;
+  padding-left: 24px;
 }
 
 </style>

@@ -4,7 +4,7 @@
       <img src="../assets/logo.png" alt="" srcset="" width="30" height="24">
     </div>
     <div>
-      <h1>Poke Api</h1>
+      <router-link class="title" to="/">Poke Api</router-link>
     </div>
     <div>
       <ul class="nav-group">
@@ -21,10 +21,7 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 
-@Options({
-  components: {
-  },
-})
+@Options({})
 export default class Header extends Vue {}
 </script>
 <style lang="scss">
@@ -43,5 +40,10 @@ export default class Header extends Vue {}
 }
 .nav-item {
   padding: 0 24px;
+}
+.title {
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
 }
 </style>
