@@ -12,7 +12,7 @@ export default createStore({
       abilities: {},
       detail: [],
     },
-    urlDefault: 'https://pokeapi.co/api/v2/pokemon?limit=5&offset=0',
+    urlDefault: 'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0',
     id: 0,
   },
   mutations: {

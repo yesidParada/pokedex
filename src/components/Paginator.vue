@@ -37,11 +37,13 @@ export default class Paginator extends Vue {
 </script>
 
 <style lang="scss">
+@import '../styles/index.scss';
 .btn {
   border: none;
   background: transparent;
   font-size: xx-large;
   cursor: pointer;
+  color: $blue-color;
   padding-left: 24px;
   text-decoration: none;
 }

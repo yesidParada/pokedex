@@ -16,6 +16,7 @@ export default class App extends Vue {}
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import './styles/index.scss';
 *{
   padding: 0;
   margin: 0;
@@ -25,10 +26,10 @@ export default class App extends Vue {}
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $dark-blue-color;
   height: 100vh;
   width: 100%;
-  background: antiquewhite;
+  // background: $secundary-color;
 }
 
 #nav {
@@ -36,11 +37,7 @@ export default class App extends Vue {}
 
   a {
     font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+    color: $dark-blue-color;
   }
 }
 </style>

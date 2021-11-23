@@ -20,18 +20,20 @@ export default class Card extends Vue {
   name!: string
 }
 </script>
-<style >
+<style lang="scss">
+@import '../styles/index.scss';
 .card-pokemon {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
   flex-direction: row-reverse;
-  background: white;
+  background: $blue-color;
   border-radius: 5px;
   padding: 1.3rem;
   box-sizing: border-box;
-  box-shadow: 1px 1px 4px #c0c0c0;
+  box-shadow: 1px 1px 4px $dark-blue-color;
+  color: $secundary-color;
   cursor: pointer;
 }
 </style>

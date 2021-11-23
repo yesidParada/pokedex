@@ -25,12 +25,15 @@ import { Options, Vue } from 'vue-class-component';
 export default class Header extends Vue {}
 </script>
 <style lang="scss">
+@import '../styles/index.scss';
 .navbar-color {
-  background: #ef5350;
+  background: $primary-color;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0px 24px;
+  color: $dark-blue-color;
+  font-weight: bold;
 }
 .nav-group {
   display: flex;
